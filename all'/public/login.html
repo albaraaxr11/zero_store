@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول - ZERO_STORE</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="container login-page">
+    <h2>تسجيل الدخول</h2>
+
+    <!-- زر تسجيل دخول جوجل -->
+    <div id="g_id_onload"
+         data-client_id="204896714123-lsb2v6gl7v6r9svcp0hovr17olg8p4cg.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse"
+         data-auto_prompt="false">
+    </div>
+
+    <div class="g_id_signin"
+         data-type="standard"
+         data-size="large"
+         data-theme="outline"
+         data-text="signin_with"
+         data-shape="rectangular"
+         data-logo_alignment="left">
+    </div>
+  </div>
+
+  <script>
+    // دالة رد جوجل
+    function handleCredentialResponse(response) {
+      console.log("Google Token:", response.credential);
+
+      // تفكيك بيانات المستخدم
+      const data = parseJwt(response.credential);
+      alert(`مرحباً ${data.name}! ✅\nإيميلك: ${data.email}`);
+
+      // حفظ حالة تسجيل الدخول
+      localStorage.setItem("loggedIn", true);
+      localStorage.setItem("user", JSON.stringify(data));
+
+      // تحويله للرئيسية
+      window.location.href = "index.html";
+    }
+
+    // دالة تفكيك JWT
+    function parseJwt(token) {
+      let base64Url = token.split('.')[1];
+      let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+
+      return JSON.parse(jsonPayload);
+    }
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل الدخول - ZERO_STORE</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="container login-page">
+    <h2>أهلاً بك في ZERO_STORE</h2>
+    <p>سجل دخولك للمتابعة إلى السلة أو إتمام الطلب</p>
+
+    <!-- زر تسجيل دخول بجوجل -->
+    <div id="g_id_onload"
+         data-client_id="204896714123-lsb2v6gl7v6r9svcp0hovr17olg8p4cg.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse"
+         data-auto_prompt="false">
+    </div>
+
+    <div class="g_id_signin custom-google"></div>
+
+    <!-- أزرار إضافية -->
+    <div class="login-buttons">
+      <button class="btn-login">تسجيل الدخول</button>
+      <button class="btn-register">إنشاء حساب</button>
+    </div>
+  </div>
+
+  <script>
+    // رد جوجل
+    function handleCredentialResponse(response) {
+      const data = parseJwt(response.credential);
+      alert(`مرحباً ${data.name}! ✅\nإيميلك: ${data.email}`);
+
+      localStorage.setItem("loggedIn", true);
+      localStorage.setItem("user", JSON.stringify(data));
+
+      // يرجع للرئيسية بعد تسجيل الدخول
+      window.location.href = "index.html";
+    }
+
+    function parseJwt(token) {
+      let base64Url = token.split('.')[1];
+      let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    }
+  </script>
+</body>
+</html>

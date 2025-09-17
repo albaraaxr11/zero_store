@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سلة ZERO_STORE</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- الهيدر -->
+  <header class="header">
+    <div class="container">
+      <img src="assets/logo.png" alt="ZERO_STORE" class="logo">
+      <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="checkout.html">السلة 🛒 <span id="cart-count">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>🛒 سلة المشتريات</h2>
+    <div id="cart-items"></div>
+
+    <div class="cart-summary">
+      <p>المجموع الفرعي: <span id="subtotal">0</span> ر.ع</p>
+      <p>الضريبة (5%): <span id="tax">0</span> ر.ع</p>
+      <p>الشحن: <span id="shipping">0</span> ر.ع</p>
+      <h3>الإجمالي: <span id="total">0</span> ر.ع</h3>
+      <button class="checkout-btn">إتمام الدفع ✅</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 ZERO_STORE - جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

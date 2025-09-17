@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZERO_STORE</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- الهيدر -->
+  <header class="header">
+    <div class="container">
+      <img src="assets/logo.png" alt="ZERO_STORE" class="logo">
+      <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="login.html">تسجيل الدخول</a>
+        <a href="register.html">إنشاء حساب</a>
+        <a href="support.html">الدعم</a>
+        <a href="checkout.html" onclick="return checkLogin()">السلة 🛒 <span id="cart-count">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- البانر -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>مرحبًا بكم في ZERO_STORE</h1>
+      <p>متجرك المفضل للمنتجات المميزة بأفضل الأسعار</p>
+      <a href="#products" class="btn">تسوق الآن</a>
+    </div>
+  </section>
+
+  <!-- المنتجات -->
+  <main id="products" class="products container">
+    <h2>منتجاتنا</h2>
+    <div class="grid">
+      <!-- منتج 1 -->
+      <div class="product-card">
+        <img src="assets/product1.jpg" alt="منتج 1">
+        <h3>منتج 1</h3>
+        <p>وصف قصير للمنتج الأول</p>
+        <span class="price">8 ر.ع</span>
+        <button onclick="addToCart('منتج 1', 8)">أضف إلى السلة</button>
+      </div>
+
+      <!-- منتج 2 -->
+      <div class="product-card">
+        <img src="assets/product2.jpg" alt="منتج 2">
+        <h3>ساعة LED</h3>
+        <p>وصف قصير للمنتج الثاني</p>
+        <span class="price">5 ر.ع</span>
+        <button onclick="addToCart('منتج 2', 5)">أضف إلى السلة</button>
+      </div>
+
+      <!-- منتج 3 (أسود/أبيض) -->
+      <div class="product-card">
+        <img id="product3-img" src="assets/product3.jpg" alt="منتج 3">
+        <h3>منتج 3</h3>
+        <p>متوفر بلونين مختلفين</p>
+        <span class="price">10 ر.ع</span>
+        <div class="colors">
+          <button onclick="changeColor('product3','assets/product3.jpg','أسود')" style="background:#000"></button>
+          <button onclick="changeColor('product3','assets/product4.jpg','أبيض')" style="background:#fff; border:1px solid #ccc"></button>
+        </div>
+        <button id="add-product3" onclick="addToCart('منتج 3 (أسود)', 10)">أضف إلى السلة</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- الفوتر -->
+  <footer>
+    <p>© 2025 ZERO_STORE - جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html><!-- Toast Notification -->
+<div id="toast" class="toast">تمت إضافة المنتج للسلة ✅</div>
+
